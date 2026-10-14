@@ -1,0 +1,44 @@
+# Ejemplos de peticiones (VS Code REST Client / IntelliJ HTTP Client)
+# Reemplaza TU-SITIO, los IDs y las credenciales.
+
+@host = https://TU-SITIO.com
+@user = usuario
+@pass = application_password
+
+### Enlazar es <-> en (abierto, sin auth)
+POST {{host}}/wp-json/custom/v1/link-translation
+Content-Type: application/json
+
+{
+  "translations": {
+    "es": 123,
+    "en": 456
+  }
+}
+
+### Enlazar es <-> en (Basic Auth con Application Password)
+POST {{host}}/wp-json/custom/v1/link-translation
+Content-Type: application/json
+Authorization: Basic {{user}}:{{pass}}
+
+{
+  "translations": {
+    "es": 123,
+    "en": 456
+  }
+}
+
+### Enlazar con header secreto (PRLT_SECRET)
+POST {{host}}/wp-json/custom/v1/link-translation
+Content-Type: application/json
+X-PRLT-Secret: un-secreto-largo-y-aleatorio
+
+{
+  "translations": {
+    "es": 123,
+    "en": 456
+  }
+}
+
+### Verificar las traducciones de un post
+GET {{host}}/wp-json/wp/v2/posts/123

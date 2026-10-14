@@ -1,0 +1,48 @@
+{
+  "name": "Polylang - enlazar traducciones via REST",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "8f2c0a10-0000-4000-8000-000000000001",
+      "name": "When clicking 'Test workflow'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://TU-SITIO.com/wp-json/custom/v1/link-translation",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"translations\": {\n    \"es\": {{ $json.post_id_es }},\n    \"en\": {{ $json.post_id_en }}\n  }\n}",
+        "options": {}
+      },
+      "id": "8f2c0a10-0000-4000-8000-000000000002",
+      "name": "Link Translations",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [480, 300]
+    }
+  ],
+  "connections": {
+    "When clicking 'Test workflow'": {
+      "main": [
+        [
+          {
+            "node": "Link Translations",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "versionId": "1",
+  "meta": {
+    "templateCredsSetupCompleted": false
+  },
+  "tags": []
+}

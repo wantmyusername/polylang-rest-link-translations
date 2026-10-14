@@ -1,0 +1,21 @@
+# macOS
+.DS_Store
+
+# Editores
+.vscode/
+.idea/
+*.sublime-*
+
+# WordPress
+wp-config.php
+wp-content/uploads/
+wp-content/cache/
+*.log
+
+# Dependencias
+node_modules/
+vendor/
+
+# Entorno
+.env
+.env.*
